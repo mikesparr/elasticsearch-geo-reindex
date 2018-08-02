@@ -39,7 +39,8 @@ curl -XPOST -H "Content-type: application/json" localhost:9200/test1/doc -d '{
 }'
 
 echo 'Confirming record exists in test1 index...'
-curl localhost:9200/_search?q=Missoula&pretty=true
+DOC_ORIG=$(curl -s 'localhost:9200/_search?q=Missoula&pretty=true' 2>/dev/null)
+echo "$DOC_ORIG"
 
 echo 'Reindexing test1 to test2 and converting to geo-shape...'
 curl -XPOST -H "Content-type: application/json" localhost:9200/_reindex -d '{
@@ -55,7 +56,8 @@ curl -XPOST -H "Content-type: application/json" localhost:9200/_reindex -d '{
 }'
 
 echo 'Confirming new record exists in test2 index...'
-curl localhost:9200/test2/_search?q=Missoula&pretty=true
+DOC_NEW=$(curl -s 'localhost:9200/test2/_search?q=Missoula&pretty=true' 2>/dev/null)
+echo "$DOC_NEW"
 
 echo 'Cleaning up ...'
 curl -XDELETE localhost:9200/test1
