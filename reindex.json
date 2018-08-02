@@ -1,0 +1,11 @@
+{
+    "source": {
+        "index": "test1"
+    },
+    "dest": {
+        "index": "test2"
+    },
+    "script": {
+        "source": "ctx._source.location.type = \"point\"; ctx._source.location.coordinates = [ctx._source.location.lon, ctx._source.location.lat]; ctx._source.location.remove('lat'); ctx._source.location.remove('lon')"
+    }
+}

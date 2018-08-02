@@ -1,0 +1,13 @@
+{
+  "mappings": {
+    "doc": {
+      "properties": {
+        "location": {
+          "type": "geo_shape",
+          "tree": "quadtree",
+          "precision": "50m"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+{
+    "city": "Missoula",
+    "state": "MT",
+    "location": {
+        "type": "point",
+        "coordinates": [-113.994, 46.872]
+    }
+}
