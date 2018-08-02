@@ -13,6 +13,8 @@ curl -XPUT -H "Content-type: application/json" localhost:9200/test1 -d '{
   }
 }'
 
+sleep .5
+
 echo 'Creating geo-shape test index mapping...'
 curl -XPUT -H "Content-type: application/json" localhost:9200/test2 -d '{
   "mappings": {
@@ -28,6 +30,8 @@ curl -XPUT -H "Content-type: application/json" localhost:9200/test2 -d '{
   }
 }'
 
+sleep .5
+
 echo 'Creating test record with geo-point location...'
 curl -XPOST -H "Content-type: application/json" localhost:9200/test1/doc -d '{
     "city": "Missoula",
@@ -38,9 +42,14 @@ curl -XPOST -H "Content-type: application/json" localhost:9200/test1/doc -d '{
     }
 }'
 
+sleep 1
+
 echo 'Confirming record exists in test1 index...'
 DOC_ORIG=$(curl -s 'localhost:9200/_search?q=Missoula&pretty=true' 2>/dev/null)
 echo "$DOC_ORIG"
+echo $2
+
+sleep .5
 
 echo 'Reindexing test1 to test2 and converting to geo-shape...'
 curl -XPOST -H "Content-type: application/json" localhost:9200/_reindex -d '{
@@ -55,9 +64,14 @@ curl -XPOST -H "Content-type: application/json" localhost:9200/_reindex -d '{
     }
 }'
 
+sleep 1
+
 echo 'Confirming new record exists in test2 index...'
 DOC_NEW=$(curl -s 'localhost:9200/test2/_search?q=Missoula&pretty=true' 2>/dev/null)
 echo "$DOC_NEW"
+echo $2
+
+sleep .5
 
 echo 'Cleaning up ...'
 curl -XDELETE localhost:9200/test1
