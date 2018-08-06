@@ -1,6 +1,6 @@
 {
   "mappings": {
-    "doc": {
+    "_doc": {
       "properties": {
         "location": {
           "type": "geo_point"

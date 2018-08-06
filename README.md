@@ -24,5 +24,6 @@ execute with any tool you choose (if curl and bash not available)
 # Resources
  * https://www.elastic.co/guide/en/elasticsearch/reference/current/geo-shape.html
  * https://www.elastic.co/guide/en/elasticsearch/reference/current/docs-reindex.html
+ * https://www.elastic.co/guide/en/elasticsearch/reference/6.3/removal-of-types.html
  
 Enjoy!

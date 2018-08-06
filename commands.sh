@@ -3,7 +3,7 @@
 echo 'Creating geo-point text index mapping...'
 curl -XPUT -H "Content-type: application/json" localhost:9200/test1 -d '{
   "mappings": {
-    "doc": {
+    "_doc": {
       "properties": {
         "location": {
           "type": "geo_point"
@@ -18,7 +18,7 @@ sleep .5
 echo 'Creating geo-shape test index mapping...'
 curl -XPUT -H "Content-type: application/json" localhost:9200/test2 -d '{
   "mappings": {
-    "doc": {
+    "_doc": {
       "properties": {
         "location": {
           "type": "geo_shape",
@@ -33,7 +33,7 @@ curl -XPUT -H "Content-type: application/json" localhost:9200/test2 -d '{
 sleep .5
 
 echo 'Creating test record with geo-point location...'
-curl -XPOST -H "Content-type: application/json" localhost:9200/test1/doc -d '{
+curl -XPOST -H "Content-type: application/json" localhost:9200/test1/_doc -d '{
     "city": "Missoula",
     "state": "MT",
     "location": {
